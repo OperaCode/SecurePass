@@ -14,53 +14,69 @@ const Home = () => {
   const [mode, setMode] = useState("default"); // Toggle between default and custom
   const [customInput, setCustomInput] = useState(""); // User-defined word/number
 
+
+
   // const generatePassword = (e) => {
   //   e.preventDefault();
-
+  
   //   const Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   //   const lowerCase = "abcdefghijklmnopqrstuvwxyz";
   //   const numbers = "0123456789";
   //   const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
-
+  
   //   let passwordCharacter = "";
   //   if (includeUppercase) passwordCharacter += Uppercase;
   //   if (includeLowercase) passwordCharacter += lowerCase;
   //   if (includeNumbers) passwordCharacter += numbers;
   //   if (includeSymbols) passwordCharacter += symbols;
-
+  
   //   if (passwordCharacter === "") {
   //     toast.error("Select at least one character type", { autoClose: 3000 });
   //     return;
   //   }
-
-  //   let generatedPassword = "";
-  //   if (mode === "custom" && customInput) {
+  
+  //   let finalPassword = "";
+  
+  //   if (mode === "custom" && (customInput).trim) {
   //     if (customInput.length >= length) {
   //       toast.error("Custom input is too long for the specified length", { autoClose: 3000 });
   //       return;
   //     }
-  //     generatedPassword = customInput;
+  
   //     const remainingLength = length - customInput.length;
+  //     let randomChars = "";
+  
+  //     // Generate the remaining random characters
   //     for (let i = 0; i < remainingLength; i++) {
   //       const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
-  //       generatedPassword += passwordCharacter[randomIndex];
+  //       randomChars += passwordCharacter[randomIndex];
   //     }
-  //     // Shuffle the password to avoid predictable placement of custom input
-  //     generatedPassword = generatedPassword
+  
+  //     // Shuffle the random characters only
+  //     const shuffledRandomChars = randomChars
   //       .split("")
   //       .sort(() => Math.random() - 0.5)
   //       .join("");
+  
+  //     // Insert the customInput at a random index within the combined string
+  //     const insertionIndex = Math.floor(Math.random() * (shuffledRandomChars.length + 1));
+  
+  //     finalPassword =
+  //       shuffledRandomChars.slice(0, insertionIndex) +
+  //       customInput +
+  //       shuffledRandomChars.slice(insertionIndex);
   //   } else {
+  //     // Generate password without custom input
   //     for (let i = 0; i < length; i++) {
   //       const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
-  //       generatedPassword += passwordCharacter[randomIndex];
+  //       finalPassword += passwordCharacter[randomIndex];
   //     }
   //   }
-
-  //   setPassword(generatedPassword);
+  
+  //   setPassword(finalPassword);
     
   // };
-
+  
 
   const generatePassword = (e) => {
     e.preventDefault();
@@ -82,34 +98,35 @@ const Home = () => {
     }
   
     let finalPassword = "";
+    const trimmedCustomInput = customInput.trim(); // ✅ Trim spaces
   
-    if (mode === "custom" && customInput) {
-      if (customInput.length >= length) {
+    if (mode === "custom" && trimmedCustomInput) {
+      if (trimmedCustomInput.length >= length) {
         toast.error("Custom input is too long for the specified length", { autoClose: 3000 });
         return;
       }
   
-      const remainingLength = length - customInput.length;
+      const remainingLength = length - trimmedCustomInput.length;
       let randomChars = "";
   
-      // Generate the remaining random characters
+      // Generate remaining random characters
       for (let i = 0; i < remainingLength; i++) {
         const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
         randomChars += passwordCharacter[randomIndex];
       }
   
-      // Shuffle the random characters only
+      // Shuffle random characters only
       const shuffledRandomChars = randomChars
         .split("")
         .sort(() => Math.random() - 0.5)
         .join("");
   
-      // Insert the customInput at a random index within the combined string
+      // Insert trimmedCustomInput at a random index within the combined string
       const insertionIndex = Math.floor(Math.random() * (shuffledRandomChars.length + 1));
   
       finalPassword =
         shuffledRandomChars.slice(0, insertionIndex) +
-        customInput +
+        trimmedCustomInput +
         shuffledRandomChars.slice(insertionIndex);
     } else {
       // Generate password without custom input
@@ -120,10 +137,8 @@ const Home = () => {
     }
   
     setPassword(finalPassword);
-    
   };
   
-
 
   const copyToClipboard = () => {
     if (!password) {
