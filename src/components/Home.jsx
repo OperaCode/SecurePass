@@ -191,7 +191,7 @@ const Home = () => {
                 ? "bg-purple-600 text-white"
                 : "bg-gray-200 text-gray-800 hover:bg-gray-300"
             }`}
-            aria-label="Switch to default password mode"
+            
           >
             Default
           </button>
@@ -203,7 +203,7 @@ const Home = () => {
                 ? "bg-purple-600 text-white"
                 : "bg-gray-200 text-gray-800 hover:bg-gray-300"
             }`}
-            aria-label="Switch to custom password mode"
+            
           >
             Custom
           </button>
@@ -222,7 +222,7 @@ const Home = () => {
               onChange={(e) => setCustomInput(e.target.value)}
               placeholder="Enter a word or number"
               className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-              aria-label="Custom word or number input"
+              
             />
           </div>
         )}
@@ -240,7 +240,7 @@ const Home = () => {
             value={length}
             onChange={(e) => setLength(Number(e.target.value))}
             className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-            aria-label="Password length input"
+            
           />
         </div>
 
@@ -288,7 +288,7 @@ const Home = () => {
         <button
           type="submit"
           className="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center justify-center gap-2"
-          aria-label="Generate password"
+          
         >
           <KeyRound size={20} />
           Generate Password
@@ -302,7 +302,7 @@ const Home = () => {
               type="button"
               onClick={copyToClipboard}
               className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300"
-              aria-label="Copy password to clipboard"
+              
             >
               Copy to Clipboard
             </button>
@@ -315,7 +315,7 @@ const Home = () => {
             type="button"
             onClick={resetForm}
             className="w-full bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-            aria-label="Reset form"
+            
           >
             Reset
           </button>
@@ -323,7 +323,7 @@ const Home = () => {
             type="button"
             onClick={goBack}
             className="w-full bg-red-500 text-white font-semibold py-2 rounded-lg hover:bg-red-600 transition duration-300"
-            aria-label="Back to home page"
+            
           >
             Back to Home
           </button>
