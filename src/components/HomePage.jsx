@@ -11,73 +11,13 @@ const Home = () => {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(false);
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState("default"); // Toggle between default and custom
-  const [customInput, setCustomInput] = useState(""); // User-defined word/number
+  const [mode, setMode] = useState("default"); 
+  const [customInput, setCustomInput] = useState(""); 
 
 
 
-  // const generatePassword = (e) => {
-  //   e.preventDefault();
-  
-  //   const Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  //   const lowerCase = "abcdefghijklmnopqrstuvwxyz";
-  //   const numbers = "0123456789";
-  //   const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
-  
-  //   let passwordCharacter = "";
-  //   if (includeUppercase) passwordCharacter += Uppercase;
-  //   if (includeLowercase) passwordCharacter += lowerCase;
-  //   if (includeNumbers) passwordCharacter += numbers;
-  //   if (includeSymbols) passwordCharacter += symbols;
-  
-  //   if (passwordCharacter === "") {
-  //     toast.error("Select at least one character type", { autoClose: 3000 });
-  //     return;
-  //   }
-  
-  //   let finalPassword = "";
-  
-  //   if (mode === "custom" && (customInput).trim) {
-  //     if (customInput.length >= length) {
-  //       toast.error("Custom input is too long for the specified length", { autoClose: 3000 });
-  //       return;
-  //     }
-  
-  //     const remainingLength = length - customInput.length;
-  //     let randomChars = "";
-  
-  //     // Generate the remaining random characters
-  //     for (let i = 0; i < remainingLength; i++) {
-  //       const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
-  //       randomChars += passwordCharacter[randomIndex];
-  //     }
-  
-  //     // Shuffle the random characters only
-  //     const shuffledRandomChars = randomChars
-  //       .split("")
-  //       .sort(() => Math.random() - 0.5)
-  //       .join("");
-  
-  //     // Insert the customInput at a random index within the combined string
-  //     const insertionIndex = Math.floor(Math.random() * (shuffledRandomChars.length + 1));
-  
-  //     finalPassword =
-  //       shuffledRandomChars.slice(0, insertionIndex) +
-  //       customInput +
-  //       shuffledRandomChars.slice(insertionIndex);
-  //   } else {
-  //     // Generate password without custom input
-  //     for (let i = 0; i < length; i++) {
-  //       const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
-  //       finalPassword += passwordCharacter[randomIndex];
-  //     }
-  //   }
-  
-  //   setPassword(finalPassword);
-    
-  // };
-  
 
+// generate password
   const generatePassword = (e) => {
     e.preventDefault();
   
@@ -98,7 +38,7 @@ const Home = () => {
     }
   
     let finalPassword = "";
-    const trimmedCustomInput = customInput.trim(); // ✅ Trim spaces
+    const trimmedCustomInput = customInput.trim(); 
   
     if (mode === "custom" && trimmedCustomInput) {
       if (trimmedCustomInput.length >= length) {
@@ -109,7 +49,7 @@ const Home = () => {
       const remainingLength = length - trimmedCustomInput.length;
       let randomChars = "";
   
-      // Generate remaining random characters
+      // to generate remaining random characters
       for (let i = 0; i < remainingLength; i++) {
         const randomIndex = Math.floor(Math.random() * passwordCharacter.length);
         randomChars += passwordCharacter[randomIndex];
@@ -139,7 +79,7 @@ const Home = () => {
     setPassword(finalPassword);
   };
   
-
+// copy to clipboard
   const copyToClipboard = () => {
     if (!password) {
       toast.error("No password to copy", { autoClose: 3000 });
@@ -224,7 +164,7 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Custom Input (Visible in Custom Mode) */}
+        {/* Custom Input  */}
         {mode === "custom" && (
           <div className="space-y-2">
             <label htmlFor="customInput" className="block font-medium text-gray-700">
@@ -299,7 +239,7 @@ const Home = () => {
           </label>
         </div>
 
-        {/* Generate Button */}
+        {/* Generate Password */}
         <button
           type="submit"
           className="w-full bg-purple-600 text-white font-semibold py-3 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center justify-center gap-2"
