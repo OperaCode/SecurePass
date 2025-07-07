@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Landing from './components/landing'
+import Landing from './components/LandPage'
 import Home from './components/home'
 import './App.css'
 
