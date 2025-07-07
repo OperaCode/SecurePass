@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import Landing from './components/LandingPage'
 import Home from './components/home'
 import './App.css'
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from './components/LandingPage';
 
 function App() {
  
@@ -12,7 +11,8 @@ function App() {
     <>
      <Router>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
+        <Route path='/' element={Landing}/>
         <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
